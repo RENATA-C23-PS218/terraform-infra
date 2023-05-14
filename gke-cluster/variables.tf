@@ -6,11 +6,13 @@ variable "region" {
 variable "gke_name" {
   type        = string
   description = "The name of the GKE cluster"
+  default     = "renata-dev-cluster"
 }
 
 variable "gke_node_pool_name" {
   type        = string
   description = "The name of the GKE node pool"
+  default     = "renata-dev-node-pool"
 }
 
 variable "network_name" {
@@ -41,6 +43,7 @@ variable "services_ipv4_cidr_block" {
 variable "master_authorized_networks_cidr_block" {
   type        = string
   description = "The CIDR block where HTTPS access is allowed from"
+  default     = null
 }
 
 variable "master_ipv4_cidr_block" {

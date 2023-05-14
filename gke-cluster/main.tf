@@ -53,9 +53,11 @@ resource "google_container_node_pool" "gke-node-pool" {
     service_account = var.service_account
     oauth_scopes    = [
       "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/devstorage.read_write",
+      "https://www.googleapis.com/auth/sqlservice.admin",
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
+
     ]
     metadata = {
       disable-legacy-endpoints = "true"
