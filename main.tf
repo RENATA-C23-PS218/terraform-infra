@@ -52,3 +52,8 @@ module "database" {
   project_id = var.project_id
   region     = var.region
 }
+
+module "artifact" { 
+  source     = "./artifact-registry"
+  region     = var.region
+}

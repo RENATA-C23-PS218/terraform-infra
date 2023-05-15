@@ -17,3 +17,8 @@ variable "service_account" {
   type        = string
   description = "Service Account email"
 }
+
+variable "registry_id" { 
+  type        = string
+  description = "Artifact Registry for storing the Docker Image of API services"
+}
