@@ -13,7 +13,7 @@ variable "zone" {
   description = "Zone to Deploy the Infrastructure"
 }
 
-variable "service_account" {
-  type        = string
-  description = "Service Account email"
+variable "cluster_node_zone" {
+  type        = list(string)
+  description = "Zone to Deploy the Kubernetes Cluster"
 }
