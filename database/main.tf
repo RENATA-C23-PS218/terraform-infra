@@ -8,7 +8,7 @@ resource "google_sql_database_instance" "renata-dev" {
   region           = var.region
   database_version = "POSTGRES_14"
   settings {
-    tier = "db-n1-standard-1"
+    tier = "db-f1-micro"
   }
 
   deletion_protection = "true"
