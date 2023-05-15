@@ -30,13 +30,13 @@ module "bastion" {
 module "gke" {
   source                                = "./gke-cluster"
   region                                = var.region
+  node_zone                             = var.cluster_node_zone
   network_name                          = module.vpc.network.name
   subnetwork_name                       = module.vpc.subnet.name
   master_ipv4_cidr_block                = "10.10.100.0/28"
-  cluster_ipv4_cidr_block               = "10.10.110.0/24"
-  services_ipv4_cidr_block              = "10.10.120.0/24"
+  cluster_ipv4_cidr_block               = "10.11.0.0/20"
+  services_ipv4_cidr_block              = "10.12.0.0/20"
   master_authorized_networks_cidr_block = "10.10.0.0/32"
-  service_account                       = var.service_account
 }
 
 module "bucket" {
