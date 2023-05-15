@@ -14,9 +14,8 @@ provider "google" {
 }
 
 module "vpc" {
-  source     = "./network"
-  project_id = var.project_id
-  region     = var.region
+  source = "./network"
+  region = var.region
 }
 
 module "bastion" {
@@ -30,9 +29,7 @@ module "bastion" {
 
 module "gke" {
   source                                = "./gke-cluster"
-  project_id                            = var.project_id
   region                                = var.region
-  zone                                  = var.zone
   network_name                          = module.vpc.network.name
   subnetwork_name                       = module.vpc.subnet.name
   master_ipv4_cidr_block                = "10.10.100.0/28"
@@ -48,7 +45,6 @@ module "bucket" {
 }
 
 module "database" {
-  source     = "./database"
-  project_id = var.project_id
-  region     = var.region
+  source = "./database"
+  region = var.region
 }
