@@ -1,3 +1,8 @@
+resource "google_service_account" "gke-sa" {
+  account_id   = var.sa_name
+  display_name = "GKE Service Account"
+}
+
 resource "google_container_cluster" "gke-cluster-dev" {
   name                     = var.gke_name
   location                 = var.region
@@ -29,10 +34,11 @@ resource "google_container_cluster" "gke-cluster-dev" {
 }
 
 resource "google_container_node_pool" "gke-node-pool" {
-  cluster    = google_container_cluster.gke-cluster-dev.name
-  name       = var.gke_node_pool_name
-  location   = var.region
-  node_count = 1
+  cluster        = google_container_cluster.gke-cluster-dev.name
+  name           = var.gke_node_pool_name
+  location       = google_container_cluster.gke-cluster-dev.location
+  node_locations = var.node_zone
+  node_count     = 1
 
   autoscaling {
     min_node_count = 1
@@ -50,7 +56,7 @@ resource "google_container_node_pool" "gke-node-pool" {
     labels       = {
       "env" = "dev"
     }
-    service_account = var.service_account
+    service_account = google_service_account.gke-sa.email
     oauth_scopes    = [
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_write",
