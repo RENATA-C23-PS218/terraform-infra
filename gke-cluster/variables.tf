@@ -1,6 +1,6 @@
-variable "region" {
+variable "zone" {
   type        = string
-  description = "The region to use"
+  description = "The zone to use"
 }
 
 variable "node_zone" {

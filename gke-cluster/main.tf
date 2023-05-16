@@ -5,7 +5,7 @@ resource "google_service_account" "gke-sa" {
 
 resource "google_container_cluster" "gke-cluster-dev" {
   name                     = var.gke_name
-  location                 = var.region
+  location                 = var.zone
   remove_default_node_pool = true
   initial_node_count       = 1
 
