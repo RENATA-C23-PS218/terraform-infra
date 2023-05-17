@@ -12,5 +12,5 @@ variable "region" {
 variable "tf_state_bucket_name" {
   type        = string
   description = "Name for the bucket"
-  default     = "tf-state-bucket"
+  default     = "tf-state-renata-dev-bucket"
 }

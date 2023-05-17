@@ -14,9 +14,7 @@ resource "google_compute_firewall" "bastion-fw-allow-ssh" {
     protocol = "tcp"
     ports    = ["22"]
   }
-  target_tags {
-    tags = ["bastion"]
-  }
+  target_tags = ["bastion"]
 }
 
 resource "google_compute_address" "bastion-ip" {
@@ -25,7 +23,7 @@ resource "google_compute_address" "bastion-ip" {
   address_type = "INTERNAL"
   region       = var.region
   subnetwork   = var.subnetwork_name
-  address      = "10.10.0.1"
+  address      = "10.10.0.2"
   description  = "Bastion IP Address"
 }
 
@@ -46,9 +44,7 @@ resource "google_compute_instance" "bastion-vm" {
   network_interface {
     network    = var.network_name
     subnetwork = var.subnetwork_name
-    access_config {
-      nat_ip = google_compute_address.bastion-ip.address
-    }
+    network_ip = google_compute_address.bastion-ip.address
   }
 
   service_account {

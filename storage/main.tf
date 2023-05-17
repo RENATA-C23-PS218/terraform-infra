@@ -4,7 +4,7 @@ resource "google_storage_bucket" "renata-dev-bucket" {
   storage_class               = "STANDARD"
   force_destroy               = true
   uniform_bucket_level_access = false
-  public_access_prevention    = "enforced"
+  public_access_prevention    = "inherited"
 }
 
 resource "google_storage_bucket_access_control" "renata-dev-bucket-acl" {
@@ -19,7 +19,7 @@ resource "google_storage_bucket" "renata-dev-tf-state" {
   storage_class               = "STANDARD"
   force_destroy               = false
   uniform_bucket_level_access = true
-  public_access_prevention    = "inherit"
+  public_access_prevention    = "enforced"
   autoclass {
     enabled = true
   }

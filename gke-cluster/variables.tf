@@ -1,6 +1,11 @@
-variable "region" {
+variable "zone" {
   type        = string
-  description = "The region to use"
+  description = "The zone to use"
+}
+
+variable "node_zone" {
+  type        = list(string)
+  description = "The node zone to use"
 }
 
 variable "gke_name" {
@@ -25,9 +30,10 @@ variable "subnetwork_name" {
   description = "The name of the subnetwork"
 }
 
-variable "service_account" {
+variable "sa_name" {
   type        = string
   description = "The service account to use"
+  default     = "renata-dev-gke-sa"
 }
 
 variable "cluster_ipv4_cidr_block" {

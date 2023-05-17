@@ -13,12 +13,7 @@ variable "zone" {
   description = "Zone to Deploy the Infrastructure"
 }
 
-variable "service_account" {
-  type        = string
-  description = "Service Account email"
-}
-
-variable "registry_id" { 
-  type        = string
-  description = "Artifact Registry for storing the Docker Image of API services"
+variable "cluster_node_zone" {
+  type        = list(string)
+  description = "Zone to Deploy the Kubernetes Cluster"
 }
