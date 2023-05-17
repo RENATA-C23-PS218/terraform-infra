@@ -63,7 +63,6 @@ resource "google_container_node_pool" "gke-node-pool" {
       "https://www.googleapis.com/auth/sqlservice.admin",
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
-
     ]
     metadata = {
       disable-legacy-endpoints = "true"
