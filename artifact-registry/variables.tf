@@ -3,3 +3,8 @@ variable "repository_id" {
   description = "This is the image registry for the development environment"
   default     = "renata-dev-repository"
 }
+
+variable "region" {
+  type        = string
+  description = "The region of the registry"
+}
