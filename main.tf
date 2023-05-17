@@ -50,6 +50,6 @@ module "database" {
 }
 
 module "artifact-registry" {
-	source = "./artifact-registry"
+  source = "./artifact-registry"
   region = var.region
 }
