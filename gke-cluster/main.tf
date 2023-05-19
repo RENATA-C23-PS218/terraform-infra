@@ -58,6 +58,7 @@ resource "google_container_node_pool" "gke-node-pool" {
     }
     service_account = google_service_account.gke-sa.email
     oauth_scopes    = [
+      "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_write",
       "https://www.googleapis.com/auth/sqlservice.admin",
