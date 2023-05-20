@@ -28,6 +28,7 @@ module "bastion" {
 }
 
 module "gke" {
+  project_id                            = var.project_id
   source                                = "./gke-cluster"
   zone                                  = var.zone
   node_zone                             = var.cluster_node_zone

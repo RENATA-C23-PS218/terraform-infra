@@ -46,3 +46,9 @@ variable "vm_name" {
   description = "The name of the VM"
   default     = "renata-dev-bastion-vm"
 }
+
+variable "roles_sa_bastion" {
+  type        = list(string)
+  description = "The roles to be assigned to the service account"
+  default     = ["roles/compute.instanceAdmin.v1", "roles/container.developer"]
+}

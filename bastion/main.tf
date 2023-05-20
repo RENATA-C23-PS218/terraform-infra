@@ -3,6 +3,15 @@ resource "google_service_account" "bastion-sa" {
   display_name = "GKE Bastion Service Account"
 }
 
+resource "google_project_iam_binding" "bastion-sa-roles" {
+  project  = var.project_id
+  for_each = toset(var.roles_sa_bastion)
+  role     = each.value
+  members  = [
+    "serviceAccount:${google_service_account.bastion-sa.email}"
+  ]
+}
+
 resource "google_compute_firewall" "bastion-fw-allow-ssh" {
   name          = var.fw_name
   network       = var.network_name
