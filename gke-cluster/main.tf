@@ -42,17 +42,17 @@ resource "google_container_cluster" "gke-cluster-dev" {
   logging_service    = "logging.googleapis.com/kubernetes"
   monitoring_service = "monitoring.googleapis.com/kubernetes"
 
-  master_authorized_networks_config {
-    cidr_blocks {
-      cidr_block   = var.master_authorized_networks_cidr_block
-      display_name = "External Control Plane Access"
-    }
-  }
+  #  master_authorized_networks_config {
+  #    cidr_blocks {
+  #      cidr_block   = var.master_authorized_networks_cidr_block
+  #      display_name = "External Control Plane Access"
+  #    }
+  #  }
 
   private_cluster_config {
-    enable_private_endpoint = true
-    enable_private_nodes    = true
-    master_ipv4_cidr_block  = var.master_ipv4_cidr_block
+    enable_private_endpoint = false
+    enable_private_nodes    = false
+    #  master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
 }
 
