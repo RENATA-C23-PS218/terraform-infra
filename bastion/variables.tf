@@ -50,5 +50,5 @@ variable "vm_name" {
 variable "roles_sa_bastion" {
   type        = list(string)
   description = "The roles to be assigned to the service account"
-  default     = ["roles/compute.instanceAdmin.v1", "roles/container.developer"]
+  default     = ["roles/compute.instanceAdmin.v1"]
 }
