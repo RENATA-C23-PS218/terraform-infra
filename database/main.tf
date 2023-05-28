@@ -7,6 +7,7 @@ resource "google_sql_database_instance" "renata-dev" {
   name             = var.instance_name
   region           = var.region
   database_version = "POSTGRES_14"
+  depends_on       = var.network_private_connection
   settings {
     tier = "db-custom-2-7680"
     ip_configuration {

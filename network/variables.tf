@@ -32,3 +32,9 @@ variable "region" {
   type        = string
   description = "The region of the network"
 }
+
+variable "private_ip_block_name" {
+  type        = string
+  description = "The name of the private ip block"
+  default     = "vpn-renata-dev-private-ip-block"
+}
