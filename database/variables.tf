@@ -14,3 +14,8 @@ variable "region" {
   type        = string
   description = "The region to create things in"
 }
+
+variable "network" {
+  type        = string
+  description = "The network to create things in"
+}

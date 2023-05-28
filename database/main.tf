@@ -9,6 +9,10 @@ resource "google_sql_database_instance" "renata-dev" {
   database_version = "POSTGRES_14"
   settings {
     tier = "db-custom-2-7680"
+    ip_configuration {
+      ipv4_enabled    = true
+      private_network = var.network
+    }
   }
 
   deletion_protection = "true"

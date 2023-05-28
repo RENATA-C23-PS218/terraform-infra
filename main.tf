@@ -46,8 +46,9 @@ module "bucket" {
 }
 
 module "database" {
-  source = "./database"
-  region = var.region
+  source  = "./database"
+  region  = var.region
+  network = module.vpc.network.id
 }
 
 module "artifact-registry" {
