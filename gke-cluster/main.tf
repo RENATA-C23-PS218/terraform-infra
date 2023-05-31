@@ -12,6 +12,13 @@ resource "google_service_account" "cicd-sa" {
   display_name = "CI/CD Service Account"
 }
 
+resource "google_iam_service_account_binding" "gsa_to_ksa" {
+  role = "roles/iam.workloadIdentityUser"
+  members = [
+    "serviceAccount:${google_service_account.gsa.email}",
+  ]
+}
+
 resource "google_project_iam_binding" "gke-sa-roles" {
   project  = var.project_id
   for_each = toset(var.roles_sa_gke)
