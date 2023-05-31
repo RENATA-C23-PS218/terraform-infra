@@ -28,6 +28,12 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   reserved_peering_ranges = [google_compute_global_address.private_ip_block.name]
 }
 
+resource "google_compute_global_address" "nat_ip" {
+  name         = "my-nat-ip"
+  purpose      = "VPC_PEERING"
+  address_type = "EXTERNAL"
+}
+
 resource "google_compute_route" "vpc-egress" {
   dest_range       = "0.0.0.0/0"
   name             = var.egress_name
@@ -43,13 +49,9 @@ resource "google_compute_router" "vpc-router" {
 
 resource "google_compute_router_nat" "vpc-nat" {
   name                               = var.nat_name
-  nat_ip_allocate_option             = "AUTO_ONLY"
+  nat_ip_allocate_option             = "MANUAL_ONLY"
   router                             = google_compute_router.vpc-router.name
   region                             = google_compute_subnetwork.vpc-subnet.region
-  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
-
-  subnetwork {
-    name                    = google_compute_subnetwork.vpc-subnet.name
-    source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
-  }
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+  nat_ips                            = [google_compute_global_address.nat_ip.name]
 }
