@@ -1,3 +1,7 @@
+resource "google_service_account" "gsa" {
+  account_id   = var.gsa_name
+  display_name = "Google Service Account"
+}
 resource "google_service_account" "gke-sa" {
   account_id   = var.sa_name
   display_name = "GKE Service Account"
