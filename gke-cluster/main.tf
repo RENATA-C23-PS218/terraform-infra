@@ -12,11 +12,17 @@ resource "google_service_account" "cicd-sa" {
   display_name = "CI/CD Service Account"
 }
 
-resource "google_iam_service_account_binding" "gsa_to_ksa" {
+resource "google_iam_service_account_binding" "gsa-to-gke-sa" {
   role = "roles/iam.workloadIdentityUser"
   members = [
     "serviceAccount:${google_service_account.gsa.email}",
   ]
+}
+
+resource "kubernetes_service_account_annotation" "gsa-to-gke-sa-annotation" {
+  service_account_name = google_service_account.gke-sa.name
+  annotation = "iam.gke.io/gcp-service-account"
+  value = google_service_account.gke-sa.email
 }
 
 resource "google_project_iam_binding" "gke-sa-roles" {
