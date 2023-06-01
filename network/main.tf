@@ -18,7 +18,7 @@ resource "google_compute_global_address" "private_ip_block" {
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
   ip_version    = "IPV4"
-  prefix_length = 28
+  prefix_length = 24
   network       = google_compute_network.vpc.self_link
 }
 

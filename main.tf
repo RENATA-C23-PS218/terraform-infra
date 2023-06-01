@@ -49,7 +49,7 @@ module "database" {
   source                     = "./database"
   region                     = var.region
   network                    = module.vpc.network.id
-  network_private_connection = module.vpc.private_ip_connection
+  network_private_connection = module.vpc.private_ip_connection.id
 }
 
 module "artifact-registry" {
