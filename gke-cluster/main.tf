@@ -1,7 +1,3 @@
-resource "google_service_account" "gsa" {
-  account_id   = var.gsa_name
-  display_name = "Google Service Account"
-}
 resource "google_service_account" "gke-sa" {
   account_id   = var.sa_name
   display_name = "GKE Service Account"
@@ -12,17 +8,20 @@ resource "google_service_account" "cicd-sa" {
   display_name = "CI/CD Service Account"
 }
 
-resource "google_iam_service_account_binding" "gsa-to-gke-sa" {
+resource "google_project_iam_binding" "gsa-to-gke-sa" {
   role = "roles/iam.workloadIdentityUser"
   members = [
-    "serviceAccount:${google_service_account.gsa.email}",
+    "serviceAccount:${google_service_account.gke-sa.email}",
   ]
 }
 
-resource "kubernetes_service_account_annotation" "gsa-to-gke-sa-annotation" {
-  service_account_name = google_service_account.gke-sa.name
-  annotation = "iam.gke.io/gcp-service-account"
-  value = google_service_account.gke-sa.email
+resource "kubernetes_service_account" "ksa" {
+  name = google_service_account.gke-sa.name
+  metadata {
+    annotations = {
+      "iam.gke.io/gcp-service-account" = google_service_account.gke-sa.email
+    }
+  }
 }
 
 resource "google_project_iam_binding" "gke-sa-roles" {
