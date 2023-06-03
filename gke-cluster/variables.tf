@@ -30,11 +30,11 @@ variable "subnetwork_name" {
   description = "The name of the subnetwork"
 }
 
-variable "gsa_name" {
-  type        = string
-  description = "The google service account to use for binding with gke service account"
-  default     = "renata-dev-gsa"
-}
+#variable "gsa_name" {
+#  type        = string
+#  description = "The google service account to use for binding with gke service account"
+#  default     = "renata-dev-gsa"
+#}
 
 variable "sa_name" {
   type        = string
