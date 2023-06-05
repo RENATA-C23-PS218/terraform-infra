@@ -1,7 +1,7 @@
 variable "bucket_name" {
   type        = string
   description = "Name for the bucket"
-  default     = "renata-dev-soil-bucket"
+  default     = "renata-dev"
 }
 
 variable "region" {
