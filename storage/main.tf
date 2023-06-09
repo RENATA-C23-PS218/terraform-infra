@@ -14,13 +14,13 @@ resource "google_storage_bucket" "renata-bucket-soil" {
   uniform_bucket_level_access = true
 }
 
-resource "google_storage_bucket_iam_member" "public-access" {
+resource "google_storage_bucket_iam_member" "public-access-profile" {
   bucket = google_storage_bucket.renata-bucket-profile.name
   member = "allUsers"
   role   = "roles/storage.objectViewer"
 }
 
-resource "google_storage_bucket_iam_member" "public-access" {
+resource "google_storage_bucket_iam_member" "public-access-soil" {
   bucket = google_storage_bucket.renata-bucket-soil.name
   member = "allUsers"
   role   = "roles/storage.objectViewer"
