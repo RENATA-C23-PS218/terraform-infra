@@ -30,12 +30,6 @@ variable "subnetwork_name" {
   description = "The name of the subnetwork"
 }
 
-#variable "gsa_name" {
-#  type        = string
-#  description = "The google service account to use for binding with gke service account"
-#  default     = "renata-dev-gsa"
-#}
-
 variable "sa_name" {
   type        = string
   description = "The service account to use"
@@ -57,17 +51,6 @@ variable "services_ipv4_cidr_block" {
   type        = string
   description = "The CIDR block to use for the service IPs"
 }
-
-variable "master_authorized_networks_cidr_block" {
-  type        = string
-  description = "The CIDR block where HTTPS access is allowed from"
-  default     = null
-}
-
-#variable "master_ipv4_cidr_block" {
-#  type        = string
-#  description = "The /28 CIDR block to use for the master IPs"
-#}
 
 variable "roles_sa_cicd" {
   type        = list(string)

@@ -1,7 +1,3 @@
-#resource "google_service_account" "gsa" {
-#  account_id   = var.gsa_name
-#  display_name = "Google Service Account"
-#}
 resource "google_service_account" "gke-sa" {
   account_id   = var.sa_name
   display_name = "GKE Service Account"
@@ -11,19 +7,6 @@ resource "google_service_account" "cicd-sa" {
   account_id   = var.cicd_name
   display_name = "CI/CD Service Account"
 }
-
-#resource "google_iam_service_account_binding" "gsa-to-gke-sa" {
-#  role = "roles/iam.workloadIdentityUser"
-#  members = [
-#    "serviceAccount:${google_service_account.gsa.email}",
-#  ]
-#}
-#
-#resource "kubernetes_service_account_annotation" "gsa-to-gke-sa-annotation" {
-#  service_account_name = google_service_account.gke-sa.name
-#  annotation = "iam.gke.io/gcp-service-account"
-#  value = google_service_account.gke-sa.email
-#}
 
 resource "google_project_iam_binding" "gke-sa-roles" {
   project  = var.project_id
@@ -59,17 +42,9 @@ resource "google_container_cluster" "gke-cluster-dev" {
   logging_service    = "logging.googleapis.com/kubernetes"
   monitoring_service = "monitoring.googleapis.com/kubernetes"
 
-  #  master_authorized_networks_config {
-  #    cidr_blocks {
-  #      cidr_block   = var.master_authorized_networks_cidr_block
-  #      display_name = "External Control Plane Access"
-  #    }
-  #  }
-
   private_cluster_config {
     enable_private_endpoint = false
     enable_private_nodes    = false
-    #  master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
 }
 
