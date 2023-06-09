@@ -1,8 +1,14 @@
-variable "bucket_name" {
+variable "bucket_name_soil" {
   type        = string
   description = "Name for the bucket"
-  default     = "renata-dev"
+  default     = "renata-dev-soil"
 }
+
+#variable "bucket_name_profile" {
+#  type        = string
+#  description = "Name for the bucket"
+#  default     = "renata-dev-profile"
+#}
 
 variable "region" {
   type        = string
