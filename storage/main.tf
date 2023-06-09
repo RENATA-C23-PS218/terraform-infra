@@ -39,3 +39,17 @@ resource "google_storage_bucket" "renata-dev-tf-state" {
     enabled = true
   }
 }
+
+resource "google_service_account" "bucket-sa" {
+  account_id   = var.sa_name
+  display_name = "Service Account for upload files to GCS"
+}
+
+resource "google_project_iam_binding" "bucket-sa-roles" {
+  project  = var.project_id
+  for_each = toset(var.roles_sa_bucket)
+  role     = each.value
+  members  = [
+    "serviceAccount:${google_service_account.bucket-sa.email}"
+  ]
+}
