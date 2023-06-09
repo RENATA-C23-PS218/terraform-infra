@@ -30,8 +30,9 @@ module "gke" {
 }
 
 module "bucket" {
-  source = "./storage"
-  region = var.region
+  source     = "./storage"
+  project_id = var.project_id
+  region     = var.region
 }
 
 module "database" {
