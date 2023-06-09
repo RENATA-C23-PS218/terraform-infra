@@ -26,7 +26,7 @@ resource "google_project_iam_binding" "cicd-sa-roles" {
   ]
 }
 
-resource "google_container_cluster" "gke-cluster-dev" {
+resource "google_container_cluster" "gke-cluster" {
   name                     = var.gke_name
   location                 = var.zone
   remove_default_node_pool = true
@@ -49,9 +49,9 @@ resource "google_container_cluster" "gke-cluster-dev" {
 }
 
 resource "google_container_node_pool" "gke-node-pool" {
-  cluster        = google_container_cluster.gke-cluster-dev.name
+  cluster        = google_container_cluster.gke-cluster.name
   name           = var.gke_node_pool_name
-  location       = google_container_cluster.gke-cluster-dev.location
+  location       = google_container_cluster.gke-cluster.location
   node_locations = var.node_zone
   node_count     = 1
 

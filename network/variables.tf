@@ -1,31 +1,31 @@
 variable "network_name" {
   type        = string
   description = "The name of the network"
-  default     = "vpn-renata-dev"
+  default     = "vpc-renata"
 }
 
 variable "subnet_name" {
   type        = string
   description = "The name of the subnet"
-  default     = "vpn-renata-dev-subnet"
+  default     = "vpc-renata-subnet"
 }
 
 variable "egress_name" {
   type        = string
   description = "The name of the egress"
-  default     = "vpn-renata-dev-egress"
+  default     = "vpc-renata-egress"
 }
 
 variable "router_name" {
   type        = string
   description = "The name of the router"
-  default     = "vpn-renata-dev-router"
+  default     = "vpc-renata-router"
 }
 
 variable "nat_name" {
   type        = string
   description = "The name of nat"
-  default     = "vpn-renata-dev-nat"
+  default     = "vpc-renata-nat"
 }
 
 variable "region" {
@@ -36,5 +36,5 @@ variable "region" {
 variable "private_ip_block_name" {
   type        = string
   description = "The name of the private ip block"
-  default     = "vpn-renata-dev-private-ip-block"
+  default     = "vpc-renata-private-ip-block"
 }

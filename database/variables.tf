@@ -1,13 +1,13 @@
 variable "db_name" {
   type        = string
   description = "The name of the database"
-  default     = "renata-dev-db"
+  default     = "renata-db"
 }
 
 variable "instance_name" {
   type        = string
   description = "The name of the instance"
-  default     = "renata-dev"
+  default     = "renata"
 }
 
 variable "region" {

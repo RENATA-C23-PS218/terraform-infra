@@ -11,13 +11,13 @@ variable "node_zone" {
 variable "gke_name" {
   type        = string
   description = "The name of the GKE cluster"
-  default     = "renata-dev-cluster"
+  default     = "renata-cluster"
 }
 
 variable "gke_node_pool_name" {
   type        = string
   description = "The name of the GKE node pool"
-  default     = "renata-dev-node-pool"
+  default     = "renata-node-pool"
 }
 
 variable "network_name" {
@@ -33,13 +33,13 @@ variable "subnetwork_name" {
 variable "sa_name" {
   type        = string
   description = "The service account to use"
-  default     = "renata-dev-gke-sa"
+  default     = "renata-gke-sa"
 }
 
 variable "cicd_name" {
   type        = string
   description = "The service account to use"
-  default     = "renata-dev-cicd-sa"
+  default     = "renata-cicd-sa"
 }
 
 variable "cluster_ipv4_cidr_block" {

@@ -1,9 +1,9 @@
-resource "google_sql_database" "renata-dev-db" {
+resource "google_sql_database" "renata-db" {
   instance = google_sql_database_instance.renata-dev.name
   name     = var.db_name
 }
 
-resource "google_sql_database_instance" "renata-dev" {
+resource "google_sql_database_instance" "renata" {
   name             = var.instance_name
   region           = var.region
   database_version = "POSTGRES_14"
