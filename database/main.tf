@@ -1,5 +1,5 @@
 resource "google_sql_database" "renata-db" {
-  instance = google_sql_database_instance.renata-dev.name
+  instance = google_sql_database_instance.renata.name
   name     = var.db_name
 }
 
