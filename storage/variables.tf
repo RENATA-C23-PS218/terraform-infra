@@ -10,6 +10,12 @@ variable "bucket_name_profile" {
   default     = "renata-profile"
 }
 
+variable "bucket_name_prompt" {
+  type        = string
+  description = "Name for the bucket"
+  default     = "renata-prompt"
+}
+
 variable "region" {
   type        = string
   description = "Region for the bucket"
