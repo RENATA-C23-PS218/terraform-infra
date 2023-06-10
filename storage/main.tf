@@ -14,6 +14,14 @@ resource "google_storage_bucket" "renata-bucket-soil" {
   uniform_bucket_level_access = true
 }
 
+resource "google_storage_bucket" "renata-bucket-prompt" {
+  location                    = var.region
+  name                        = var.bucket_name_prompt
+  storage_class               = "STANDARD"
+  force_destroy               = true
+  uniform_bucket_level_access = true
+}
+
 resource "google_storage_bucket_iam_member" "public-access-profile" {
   bucket = google_storage_bucket.renata-bucket-profile.name
   member = "allUsers"
@@ -22,6 +30,12 @@ resource "google_storage_bucket_iam_member" "public-access-profile" {
 
 resource "google_storage_bucket_iam_member" "public-access-soil" {
   bucket = google_storage_bucket.renata-bucket-soil.name
+  member = "allUsers"
+  role   = "roles/storage.objectViewer"
+}
+
+resource "google_storage_bucket_iam_member" "public-access-prompt" {
+  bucket = google_storage_bucket.renata-bucket-prompt.name
   member = "allUsers"
   role   = "roles/storage.objectViewer"
 }
