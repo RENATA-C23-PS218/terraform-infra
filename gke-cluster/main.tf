@@ -81,12 +81,6 @@ resource "google_container_node_pool" "gke-node-pool" {
   }
 }
 
-resource "google_compute_address" "static_ip" {
+resource "google_compute_global_address" "static_ip" {
   name = var.gke-ingress-static-ip
-}
-
-resource "kubernetes_ingress" "default" {
-  annotations = {
-    "kubernetes.io/ingress.global-static-ip-name" = google_compute_address.static_ip.name
-  }
 }
