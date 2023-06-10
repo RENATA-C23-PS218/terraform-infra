@@ -71,3 +71,9 @@ variable "project_id" {
   type        = string
   description = "The project ID to use"
 }
+
+variable "gke-ingress-static-ip" {
+  type        = string
+  description = "The static ip for GKE ingress to use at the DNS"
+  default = "renata-gke-ip"
+}
