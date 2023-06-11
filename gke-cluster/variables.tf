@@ -64,7 +64,7 @@ variable "roles_sa_cicd" {
 variable "roles_sa_gke" {
   type        = list(string)
   description = "The roles to be assigned to the service account"
-  default     = ["roles/cloudsql.client", "roles/storage.objectCreator", "roles/storage.objectViewer"]
+  default     = ["roles/cloudsql.client", "roles/storage.objectCreator", "roles/storage.objectViewer", "roles/artifactregistry.reader"]
 }
 
 variable "project_id" {
