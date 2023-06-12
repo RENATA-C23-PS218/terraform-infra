@@ -8,6 +8,11 @@ resource "google_service_account" "cicd-sa" {
   display_name = "CI/CD Service Account"
 }
 
+resource "google_service_account" "prompt-sa" {
+  account_id   = var.prompt_name
+  display_name = "Prompt Service Account"
+}
+
 resource "google_project_iam_binding" "gke-sa-roles" {
   project  = var.project_id
   for_each = toset(var.roles_sa_gke)
@@ -23,6 +28,14 @@ resource "google_project_iam_binding" "cicd-sa-roles" {
   role     = each.value
   members  = [
     "serviceAccount:${google_service_account.cicd-sa.email}"
+  ]
+}
+
+resource "google_project_iam_binding" "prompt-sa-roles" {
+  project = var.project_id
+  role    = "roles/vertexai.serviceAgent"
+  members = [
+    "serviceAccount:${google_service_account.prompt-sa.email}"
   ]
 }
 

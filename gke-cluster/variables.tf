@@ -42,6 +42,12 @@ variable "cicd_name" {
   default     = "renata-cicd-sa"
 }
 
+variable "prompt_name" {
+  type        = string
+  description = "The service account to use"
+  default     = "prompt-service"
+}
+
 variable "cluster_ipv4_cidr_block" {
   type        = string
   description = "The CIDR block to use for pod IPs"
@@ -64,7 +70,10 @@ variable "roles_sa_cicd" {
 variable "roles_sa_gke" {
   type        = list(string)
   description = "The roles to be assigned to the service account"
-  default     = ["roles/cloudsql.client", "roles/storage.objectCreator", "roles/storage.objectViewer", "roles/artifactregistry.reader"]
+  default     = [
+    "roles/cloudsql.client", "roles/storage.objectCreator", "roles/storage.objectViewer",
+    "roles/artifactregistry.reader"
+  ]
 }
 
 variable "project_id" {
@@ -75,5 +84,5 @@ variable "project_id" {
 variable "gke-ingress-static-ip" {
   type        = string
   description = "The static ip for GKE ingress to use at the DNS"
-  default = "renata-gke-ip"
+  default     = "renata-gke-ip"
 }
