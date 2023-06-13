@@ -72,7 +72,7 @@ variable "roles_sa_gke" {
   description = "The roles to be assigned to the service account"
   default     = [
     "roles/cloudsql.client", "roles/storage.objectCreator", "roles/storage.objectViewer",
-    "roles/artifactregistry.reader"
+    "roles/artifactregistry.reader", "roles/aiplatform.serviceAgent"
   ]
 }
 
